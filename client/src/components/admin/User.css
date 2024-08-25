@@ -1,0 +1,80 @@
+/* User.css */
+
+/* Styles généraux pour le conteneur principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style pour le titre principal */
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Styles pour le formulaire */
+.form-control {
+  border-radius: 0.25rem;
+  box-shadow: inset 0 0 0 1px #ced4da;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+/* Styles pour les boutons */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  opacity: 0.9;
+}
+
+/* Styles pour le tableau */
+.table {
+  margin-top: 30px;
+}
+
+.table th, .table td {
+  text-align: center;
+}
+
+.table thead th {
+  background-color: #f8f9fa;
+  color: #495057;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f2f2f2;
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.table-bordered th, .table-bordered td {
+  border: 1px solid #dee2e6;
+}
+
+/* Styles pour les cases à cocher dans les permissions */
+.form-check-label {
+  margin-left: 5px;
+}
+
+/* Style pour les messages d'alerte */
+.alert {
+  margin-top: 20px;
+}

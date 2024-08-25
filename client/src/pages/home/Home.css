@@ -1,0 +1,23 @@
+.home {
+    background-color: rgb(7, 9, 122);
+    /*background-image: url('../../assets/img/image6.jpg'); /* Remplacez par le chemin de votre image */
+    background-size: cover;
+    height: 100vh; /* Hauteur de la vue */
+    color: white; /* Couleur du texte */
+    font-family: sans-serif; /* Police personnalisée */
+    text-align: center; /* Centre le texte */
+}
+
+.home h1 {
+    font-weight: bold; /* Gras */
+    margin: 2rem 0; /* Espacement personnalisé */
+    color: #f1ecec; /* Couleur du texte */
+    margin-top: 5px;
+}
+
+/* Media queries pour un layout réactif */
+@media (max-width: 768px) {
+    .home h1 {
+        font-size: 1.8rem; /* Ajustement de la taille de la police pour les petits écrans */
+    }
+}

@@ -1,0 +1,102 @@
+/* DashboardAdmin.css */
+
+/* General Styles */
+body {
+  background-color: #f8f9fa; /* Light background for the dashboard */
+  font-family: Arial, sans-serif;
+}
+
+.d-flex {
+  display: flex;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+}
+
+/* Error State */
+.error-container {
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f8d7da; /* Light red background for errors */
+  color: #721c24; /* Dark red text color */
+  border: 1px solid #f5c6cb; /* Red border */
+  border-radius: 5px;
+}
+
+.error-container button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.error-container button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Sidebar and Navbar */
+.w-100 {
+  flex-grow: 1; /* Allow the main content to grow */
+}
+
+/* Widget Styles */
+.widget {
+  background-color: white; /* White background for widgets */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px; /* Space between widgets */
+}
+
+.widget h4 {
+  margin-bottom: 10px; /* Space below the title */
+}
+
+.widget .icon {
+  font-size: 2rem; /* Larger icon size */
+  color: #007bff; /* Primary color for icons */
+}
+
+/* Chart Container */
+.chart-container {
+  background-color: white; /* White background for charts */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px;
+  margin-bottom: 20px; /* Space below chart containers */
+}
+
+.section-title {
+  font-size: 1.5rem; /* Larger title size */
+  margin-bottom: 15px; /* Space below section title */
+}
+
+.chart-group {
+  margin-bottom: 20px; /* Space below each chart group */
+}
+
+.chart-subtitle {
+  font-size: 1.2rem; /* Subtitle size */
+  margin-bottom: 10px; /* Space below subtitle */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .widget {
+    margin-bottom: 15px; /* Reduce space on smaller screens */
+  }
+
+  .chart-container {
+    padding: 15px; /* Reduce padding on smaller screens */
+  }
+}

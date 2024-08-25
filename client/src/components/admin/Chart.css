@@ -1,0 +1,38 @@
+/* src/components/admin/Chart.css */
+
+/* Conteneur principal des graphiques */
+.chart-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Espace entre les graphiques */
+  justify-content: space-between; /* Répartir les graphiques de manière égale sur la ligne */
+  margin: 10px 0; /* Marge en haut et en bas du conteneur */
+}
+
+/* Styles pour chaque graphique */
+.chart-wrapper {
+  flex: 1; /* Permet à chaque graphique de prendre la même largeur */
+  min-width: 300px; /* Largeur minimale pour chaque graphique */
+  background-color: #fff; /* Fond blanc pour chaque graphique */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  padding: 20px; /* Espacement interne */
+  transition: box-shadow 0.3s; /* Transition pour l'ombre */
+}
+
+.chart-wrapper:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombre plus marquée au survol */
+}
+
+/* Assurez-vous que les graphiques s'ajustent correctement */
+.chart-wrapper canvas {
+  width: 100% !important; /* Assure que le graphique occupe toute la largeur du conteneur */
+  height: auto !important; /* Hauteur automatique pour conserver les proportions */
+}
+
+/* Styles réactifs */
+@media (max-width: 768px) {
+  .chart-wrapper {
+      min-width: 100%; /* Largeur de 100% sur mobile */
+  }
+}

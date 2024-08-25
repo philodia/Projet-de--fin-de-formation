@@ -1,0 +1,10 @@
+/* src/pages/comptaDashboard/DashboardCompta.css */
+.d-flex {
+    display: flex;
+  }
+  
+  .w-100 {
+    width: 100%;
+  }
+  
+  /* Ajoutez d'autres styles selon vos besoins */

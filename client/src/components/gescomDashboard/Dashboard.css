@@ -1,0 +1,36 @@
+/* Dashboard.css */
+
+.dashboard {
+    padding: 20px;
+    background-color: #f4f4f4; /* Couleur de fond légère */
+    min-height: calc(100vh - 60px); /* Ajuste la hauteur en fonction de la hauteur de la barre de navigation */
+  }
+  
+  .dashboard h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .dashboard-card {
+    background-color: #fff; /* Couleur de fond blanche pour les cartes */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    padding: 20px;
+    flex: 1;
+    min-width: 300px; /* Largeur minimale pour chaque carte */
+  }
+  
+  .dashboard-card h2 {
+    margin-top: 0;
+  }
+  
+  .dashboard-card p {
+    margin: 10px 0 0;
+  }
+  

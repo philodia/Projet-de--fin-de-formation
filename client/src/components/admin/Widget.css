@@ -1,0 +1,35 @@
+/* src/components/Widget.css */
+
+.widget-card {
+    background-color: #ffffff; /* Couleur de fond des widgets */
+    border: 1px solid #dee2e6; /* Bordure des widgets */
+    border-radius: 5px; /* Bords arrondis des widgets */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre portée */
+    padding: 10px; /* Espacement interne des widgets */
+    text-align: center; /* Centrage du texte */
+    margin-top: 10px;
+  }
+  
+  .widget-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px; /* Espacement sous le header */
+  }
+  
+  .widget-icon {
+    font-size: 2rem; /* Taille de l'icône */
+    margin-right: 10px; /* Espacement entre l'icône et le titre */
+  }
+  
+  .widget-title {
+    font-size: 1.25rem; /* Taille du titre */
+    color: #333; /* Couleur du titre */
+  }
+  
+  .widget-value {
+    font-size: 2rem; /* Taille de la valeur */
+    font-weight: bold; /* Gras pour la valeur */
+    color: #007bff; /* Couleur de la valeur */
+  }
+  

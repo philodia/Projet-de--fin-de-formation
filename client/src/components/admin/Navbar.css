@@ -1,0 +1,72 @@
+/* DashboardNavbar.css */
+
+/* Style pour la barre de navigation */
+.navbar {
+    border-bottom: 2px solid #007bff; /* Bordure inférieure bleue pour séparer la navbar du reste */
+    border-radius: 10px;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+  }
+  
+  .navbar-brand .fa-home {
+    margin-right: 0.5rem; /* Espacement entre l'icône et le texte */
+    margin-left: 50px;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+    margin-right: 1rem; /* Espacement entre les liens */
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-link .fa-home,
+  .nav-link .fa-chart-line,
+  .nav-link .fa-user,
+  .nav-link .fa-cog,
+  .nav-link .fa-sign-out-alt {
+    margin-right: 0.5rem; /* Espacement entre l'icône et le texte du lien */
+  }
+  
+  .navbar-nav {
+    align-items: center;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16m-7 6h7'/%3E%3C/svg%3E");
+  }
+  
+  /* Style pour le menu déroulant */
+  .nav-dropdown {
+    font-size: 1rem;
+  }
+  
+  .nav-dropdown-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-dropdown-item .fa-user,
+  .nav-dropdown-item .fa-cog {
+    margin-right: 0.5rem;
+  }
+  
+  /* Style pour le lien de déconnexion */
+  .nav-link.logout {
+    color: #dc3545; /* Couleur rouge pour le lien de déconnexion */
+  }
+  
+  .nav-link.logout:hover {
+    color: #c82333; /* Couleur rouge plus foncé au survol */
+  }
+  
+  .navbar-nav .ml-auto {
+    margin-left: auto; /* Aligne le lien de déconnexion à droite */
+  }
+  

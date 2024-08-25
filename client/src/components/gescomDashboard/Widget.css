@@ -1,0 +1,32 @@
+/* src/components/gestionnaireCommercial/Widget.css */
+
+.widget {
+    background-color: #ffffff; /* Couleur de fond blanche */
+    border: 1px solid #dee2e6; /* Bordure légère */
+    border-radius: 8px; /* Coins arrondis */
+    padding: 20px;
+    text-align: center; /* Centrer le contenu */
+    transition: box-shadow 0.3s ease; /* Transition pour l'effet d'ombre */
+  }
+  
+  .widget:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+  }
+  
+  .widget-icon {
+    font-size: 2rem; /* Taille de l'icône */
+    margin-bottom: 10px; /* Espace en bas de l'icône */
+    color: #007bff; /* Couleur de l'icône */
+  }
+  
+  .widget-title {
+    font-size: 1.5rem; /* Taille du titre */
+    font-weight: bold; /* Gras */
+    color: #343a40; /* Couleur de texte sombre */
+  }
+  
+  .widget-value {
+    font-size: 1.25rem; /* Taille de la valeur */
+    font-weight: bold; /* Gras */
+    color: #28a745; /* Couleur verte pour les valeurs */
+  }
