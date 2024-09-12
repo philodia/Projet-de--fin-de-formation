@@ -1,16 +1,47 @@
+// routes/DashboardAdmin.routes.js
+
 const express = require('express');
-const {
-  createDashboardAdminData,
-  getDashboardAdminData,
-  updateDashboardAdminData,
-  deleteDashboardAdminData,
-} = require('../controllers/DashboardAdminController.js'); // Correction de l'importation
-
 const router = express.Router();
+const {
+  getDashboardAdmin,
+  updateDashboardAdmin,
+  createDashboardAdminController
+} = require('../controllers/DashboardAdminController');
 
-router.post('/', createDashboardAdminData);
-router.get('/:id', getDashboardAdminData);
-router.patch('/:id', updateDashboardAdminData);
-router.delete('/:id', deleteDashboardAdminData);
+// Middleware pour vérifier l'authentification et les rôles
+const { authMiddleware, checkRole } = require('../middlewares/AuthMiddleware');
 
-module.exports = router; // Correction de l'export
+/**
+ * Route pour obtenir les données du tableau de bord administrateur
+ * Accessible uniquement aux administrateurs.
+ */
+router.get(
+  '/',
+  authMiddleware,             // Vérification du token d'authentification
+  checkRole(['administrateur']), // Vérification du rôle 'administrateur'
+  getDashboardAdmin             // Contrôleur qui gère la logique métier
+);
+
+/**
+ * Route pour mettre à jour les données du tableau de bord administrateur
+ * Accessible uniquement aux administrateurs.
+ */
+router.put(
+  '/',
+  authMiddleware,              // Vérification du token d'authentification
+  checkRole(['administrateur']), // Vérification du rôle 'administrateur'
+  updateDashboardAdmin          // Contrôleur qui gère la mise à jour
+);
+
+/**
+ * Route pour créer un nouveau tableau de bord administrateur
+ * Accessible uniquement aux administrateurs.
+ */
+router.post(
+  '/',
+  authMiddleware,               // Vérification du token d'authentification
+  checkRole(['administrateur']),  // Vérification du rôle 'administrateur'
+  createDashboardAdminController  // Contrôleur qui gère la création
+);
+
+module.exports = router;

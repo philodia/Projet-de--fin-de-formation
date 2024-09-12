@@ -1,27 +1,30 @@
 const express = require('express');
 const router = express.Router();
 const AuthController = require('../controllers/AuthController');
-const AuthMiddleware = require('../middlewares/AuthMiddleware'); // Assurez-vous que ce middleware est bien défini pour l'authentification
+const { authMiddleware, checkRole } = require('../middlewares/AuthMiddleware');
 
-// Route d'inscription
-router.post('/register', AuthController.register);
+// Route d'inscription (accessible uniquement aux administrateurs avec la permission de création)
+router.post('/register', authMiddleware, checkRole(['administrateur'], { canCreate: true }), AuthController.register);
 
-// Route de connexion
+// Route pour créer un administrateur (accessible uniquement aux administrateurs avec les permissions nécessaires)
+router.post('/create-admin', authMiddleware, checkRole(['administrateur'], { canCreate: true }), AuthController.createAdmin);
+
+// Route de connexion (accessible à tous)
 router.post('/login', AuthController.login);
 
-// Route pour obtenir tous les utilisateurs (nécessite une authentification)
-router.get('/users', AuthMiddleware, AuthController.getUsers);
+// Route pour obtenir tous les utilisateurs (accessible uniquement aux administrateurs)
+router.get('/users', authMiddleware, checkRole(['administrateur']), AuthController.getUsers);
 
-// Route pour mettre à jour un utilisateur (nécessite une authentification)
-router.put('/users/:id', AuthMiddleware, AuthController.updateUser);
+// Route pour mettre à jour un utilisateur (accessible uniquement aux administrateurs)
+router.put('/users/:id', authMiddleware, checkRole(['administrateur']), AuthController.updateUser);
 
-// Route pour supprimer un utilisateur (nécessite une authentification)
-router.delete('/users/:id', AuthMiddleware, AuthController.deleteUser);
+// Route pour supprimer un utilisateur (accessible uniquement aux administrateurs)
+router.delete('/users/:id', authMiddleware, checkRole(['administrateur']), AuthController.deleteUser);
 
-// Route pour la déconnexion (peut nécessiter une authentification pour valider la déconnexion)
-router.post('/logout', AuthMiddleware, AuthController.logout);
+// Route pour la déconnexion (nécessite une authentification)
+router.post('/logout', authMiddleware, AuthController.logout);
 
 // Route pour vérifier le statut de connexion (nécessite une authentification)
-router.get('/status', AuthMiddleware, AuthController.checkStatus);
+router.get('/status', authMiddleware, AuthController.checkStatus);
 
 module.exports = router;

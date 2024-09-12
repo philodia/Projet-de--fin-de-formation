@@ -1,3 +1,4 @@
+// src/reducers/authReducer.js
 import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,

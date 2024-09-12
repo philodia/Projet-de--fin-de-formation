@@ -1,10 +1,12 @@
-// models/DashboardAdmin.js
 const mongoose = require('mongoose');
 
 /**
  * Schéma pour les données du tableau de bord administratif
+ * incluant les informations des tableaux de bord de gestion commerciale (Gescom)
+ * et de comptabilité (Compta).
  */
 const dashboardAdminSchema = new mongoose.Schema({
+  // Données générales pour l'administrateur
   totalUsers: {
     type: Number,
     default: 0,
@@ -18,11 +20,49 @@ const dashboardAdminSchema = new mongoose.Schema({
     default: 0,
   },
   salesOverview: {
-    type: [Object], // Vous pouvez spécifier un schéma plus détaillé si nécessaire
+    type: [Object], // Aperçu des ventes
     default: [],
   },
   expensesOverview: {
-    type: [Object], // Vous pouvez spécifier un schéma plus détaillé si nécessaire
+    type: [Object], // Aperçu des dépenses
+    default: [],
+  },
+
+  // Données spécifiques au tableau de bord de gestion commerciale (Gescom)
+  gescom: {
+    totalProducts: {
+      type: Number,
+      default: 0,
+    },
+    totalOrders: {
+      type: Number,
+      default: 0,
+    },
+    pendingOrders: {
+      type: Number,
+      default: 0,
+    },
+  },
+
+  // Données spécifiques au tableau de bord de comptabilité (Compta)
+  compta: {
+    totalExpenses: {
+      type: Number,
+      default: 0,
+    },
+    totalIncome: {
+      type: Number,
+      default: 0,
+    },
+    balance: {
+      type: Number,
+      default: 0,
+    },
+  },
+
+  // Historique des utilisateurs et des permissions
+  userActivityLog: {
+    type: [Object], // Liste des activités des utilisateurs
     default: [],
   },
 });
@@ -44,6 +84,17 @@ function createDashboardAdmin(apiData) {
     growthRate: apiData.growthRate,
     salesOverview: apiData.salesOverview,
     expensesOverview: apiData.expensesOverview,
+    gescom: {
+      totalProducts: apiData.gescom.totalProducts,
+      totalOrders: apiData.gescom.totalOrders,
+      pendingOrders: apiData.gescom.pendingOrders,
+    },
+    compta: {
+      totalExpenses: apiData.compta.totalExpenses,
+      totalIncome: apiData.compta.totalIncome,
+      balance: apiData.compta.balance,
+    },
+    userActivityLog: apiData.userActivityLog,
   });
 }
 

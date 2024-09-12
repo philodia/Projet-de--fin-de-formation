@@ -1,62 +1,61 @@
-const { DashboardAdmin } = require('../models/DashboardAdmin.js');
+// controllers/DashboardAdminController.js
 
-// Crée une nouvelle instance de DashboardAdmin et la sauvegarde en base de données
-const createDashboardAdminData = async (req, res) => {
-  try {
-    const dashboardData = new DashboardAdmin(req.body); // Crée une nouvelle instance avec les données du corps de la requête
-    const savedDashboard = await dashboardData.save(); // Sauvegarde dans la base de données
-    res.status(201).json(savedDashboard); // Retourne l'objet sauvegardé avec un statut 201
-  } catch (error) {
-    res.status(500).json({ error: error.message }); // Retourne une erreur interne du serveur
-  }
-};
+const { DashboardAdmin, createDashboardAdmin } = require('../models/DashboardAdmin');
 
-// Récupère un DashboardAdmin par son identifiant
-const getDashboardAdminData = async (req, res) => {
+/**
+ * Obtenir les données du tableau de bord administrateur.
+ * @param {Object} req - La requête HTTP.
+ * @param {Object} res - La réponse HTTP.
+ */
+const getDashboardAdmin = async (req, res) => {
   try {
-    const dashboardData = await DashboardAdmin.findById(req.params.id); // Cherche l'objet par son ID
+    const dashboardData = await DashboardAdmin.findOne(); // On récupère les données du tableau de bord
     if (!dashboardData) {
-      return res.status(404).json({ error: 'Dashboard data not found' }); // Retourne une erreur 404 si non trouvé
+      return res.status(404).json({ message: 'Tableau de bord non trouvé' });
     }
-    res.json(dashboardData); // Retourne l'objet trouvé
+    res.status(200).json(dashboardData);
   } catch (error) {
-    res.status(500).json({ error: error.message }); // Retourne une erreur interne du serveur
+    res.status(500).json({ message: 'Erreur serveur', error });
   }
 };
 
-// Met à jour un DashboardAdmin par son identifiant
-const updateDashboardAdminData = async (req, res) => {
+/**
+ * Mettre à jour les données du tableau de bord administrateur.
+ * @param {Object} req - La requête HTTP.
+ * @param {Object} res - La réponse HTTP.
+ */
+const updateDashboardAdmin = async (req, res) => {
   try {
-    const dashboardData = await DashboardAdmin.findByIdAndUpdate(
-      req.params.id, // ID de l'objet à mettre à jour
-      req.body, // Données de mise à jour
-      { new: true, runValidators: true } // Retourne l'objet mis à jour et exécute les validateurs
+    const apiData = req.body;
+    const updatedDashboard = await DashboardAdmin.findOneAndUpdate(
+      {}, // Critère de recherche, vide pour mettre à jour le seul document existant
+      apiData,
+      { new: true, upsert: true } // On crée une nouvelle entrée si elle n'existe pas
     );
-    if (!dashboardData) {
-      return res.status(404).json({ error: 'Dashboard data not found' }); // Retourne une erreur 404 si non trouvé
-    }
-    res.json(dashboardData); // Retourne l'objet mis à jour
+    res.status(200).json(updatedDashboard);
   } catch (error) {
-    res.status(400).json({ error: error.message }); // Retourne une erreur 400 si la mise à jour échoue
+    res.status(500).json({ message: 'Erreur serveur', error });
   }
 };
 
-// Supprime un DashboardAdmin par son identifiant
-const deleteDashboardAdminData = async (req, res) => {
+/**
+ * Créer un nouveau tableau de bord administrateur.
+ * @param {Object} req - La requête HTTP.
+ * @param {Object} res - La réponse HTTP.
+ */
+const createDashboardAdminController = async (req, res) => {
   try {
-    const dashboardData = await DashboardAdmin.findByIdAndDelete(req.params.id); // Supprime l'objet par son ID
-    if (!dashboardData) {
-      return res.status(404).json({ error: 'Dashboard data not found' }); // Retourne une erreur 404 si non trouvé
-    }
-    res.json({ message: 'Dashboard data deleted' }); // Retourne un message de succès
+    const apiData = req.body;
+    const newDashboard = createDashboardAdmin(apiData);
+    await newDashboard.save();
+    res.status(201).json(newDashboard);
   } catch (error) {
-    res.status(500).json({ error: error.message }); // Retourne une erreur interne du serveur
+    res.status(500).json({ message: 'Erreur lors de la création du tableau de bord', error });
   }
 };
 
 module.exports = {
-  createDashboardAdminData,
-  getDashboardAdminData,
-  updateDashboardAdminData,
-  deleteDashboardAdminData
+  getDashboardAdmin,
+  updateDashboardAdmin,
+  createDashboardAdminController
 };

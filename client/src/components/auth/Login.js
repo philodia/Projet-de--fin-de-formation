@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../../actions/authActions';
+import { login } from '../../actions/authActions'; // Assurez-vous que ce chemin est correct
 import styles from './Login.module.css';
 import logo from '../../assets/logo/logo3.avif';
 import { FaUserAlt, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -43,7 +43,7 @@ const Login = () => {
         <img src={logo} alt="Logo" />
       </div>
       <h2>Connexion</h2>
-      {error && <p className={styles.textDanger}>{error}</p>}
+      {error && <p className={styles.textDanger}>{error.message || "An error occurred"}</p>}
       <form onSubmit={handleLogin} className={styles.form}>
         <div className={styles.formGroup}>
           <label htmlFor="email" className={styles.label}>
